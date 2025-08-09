@@ -86,4 +86,4 @@ Another note, since I lost a lot of time here too :sad: I was initially trying t
 
 We have our shell! Topperia!!
 
-p.s. Now that you have the note, rememeber that you can run `./utils/narnia-connect.sh add <pwd>` command to add the password to the database and then use `./utils/narnia-connect.sh <level>` to quickly connect to the server as the user of the password you just got.
+p.s. Now that you have the password, rememeber that you can run `./utils/narnia-connect.sh add <pwd>` command to add the password to the database and then use `./utils/narnia-connect.sh <level>` to quickly connect to the server as the user of the password you just got.
