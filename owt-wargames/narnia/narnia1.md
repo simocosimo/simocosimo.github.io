@@ -56,6 +56,7 @@ If I were you though, I would follow the first point. You will discover a lot of
 I mainly use google to search for shellcodes, but you'll end up always in the same websites that have extensive databases of shellcodes: I mainly use [Exploit Database](https://www.exploit-db.com/shellcodes) and [this amazing repository](https://github.com/7feilee/shellcode) from 7feilee.
 
 I found what we wanted in the repo, [this particular shellcode](https://github.com/7feilee/shellcode/blob/master/Linux/x86/setreuid(geteuid()%2Cgeteuid())%2Cexecve(-bin-sh%2C0%2C0).c).
+
 **A NOTE**: I have to be honest, I wasted a lot of time because I didn't read correctly **ALL** the info that the challenge gave me lol I was constantly looking for a shellcode that was targeting the Linux x86_64 architecture (remember, shellcodes are specific byte code instructions, hence they change from arch to arch). I did this because my friend `uname -a` gave me that information. But then, after trying a lot of shellcodes and constantly getting `Segmentation fault`s I noticed that, right when you log into the server, it says this:
 ```
 This machine has a 64bit processor and many security-features enabled
