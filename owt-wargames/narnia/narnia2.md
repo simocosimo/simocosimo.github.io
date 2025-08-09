@@ -79,10 +79,10 @@ This means that we're writing, somewhere in the stack, a return address that was
 (i know right? disass, thisass ehehehe)
 
 We get this!
-![images/narnia2-gef-disass.png]
+![images/narnia2-gef-disass.png](images/narnia2-gef-disass.png)
 This is the disassembler that is trying to let us see how the `main` function is made, and we see that yes, we have a `ret` statement! Address `0x080491d8` in the picture, last one.
 Ok so if we want to really make sure it is the instruction we're looking for, we could try run the program again with some non-malicious input this time, put a breakpoint at that address with `b *0x080491d8` and then use the `info frame` command to have a recap of the stack and the registers of interest. We get this:
-![images/narnia2-gem-nominalframe.png]
+![images/narnia2-gem-nominalframe.png](images/narnia2-gem-nominalframe.png)
 In the output of the command we see that this `eip` register is mentioned a lot, which in x86 architecture slang is the same for Program Counter (or Instruction Counter, in this case). So basically, by looking also a the useful graph above, we see that the program after the `ret` function will execute the instruction at address `0xf7d9ecb9`, which is called the `saved eip` in the info frame output. Now try again with the malicious payload and see that the saved eip is now filled with our 0x41 :)
 
 ## Precision!
@@ -150,7 +150,7 @@ The notation before the address is to choose how to display values, [this cheats
 By looking at the stack more closely with the last command, we can finally decide which is the address we want to target for the eip new value. Since NOPs are harmful commands (in our case lol) we can even decide to choose an address populated with our NOPs instructions, that eventually, with the eip increasing, will lead to our shellcode execution.
 
 With this stack structure
-![images/narnia2-gef-stack-view.png]
+![images/narnia2-gef-stack-view.png](images/narnia2-gef-stack-view.png)
 I choose the `0xffffd544` address, right in the middle of our NOP chain.
 
 ## Success over this fucking guy
