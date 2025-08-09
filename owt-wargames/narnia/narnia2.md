@@ -168,5 +168,5 @@ gef> r $(python3 narnia2.py '\x44\xd5\xff\xff')
 ```
 remember the endianess!
 
-We have a shell! Now, you might me sad because the shell runs as narnia2 user (try the `whoami` command). Don't worry, it is becaue we're using gdb and the debugger does things in the background when new processes are spawned (like the shell in this case).
+We have a shell! Now, you might be sad because the shell runs as narnia2 user (try the `whoami` command). Don't worry, it is becaue we're using gdb and the debugger does things in the background when new processes are spawned (like the shell in this case).
 If you run it without gdb/gef you'll have the new password to add to your database with narnia-controller.sh!
