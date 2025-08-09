@@ -153,7 +153,7 @@ gef> x/100x $esp+500
 Why `+500`? Tbh still trying to understand... You can just look up $esp, but stacks grow from the bottom to the top, so you still to go a little bit down. An alternative would be using `gef> vmmap` to see the stack start and end addresses, and subtracting from the end, until finding our malicious bytes.
 The notation before the address is to choose how to display values, [this cheatsheet](https://trebledj.me/posts/gdb-cheatsheet/) is useful if you want.
 
-By looking at the stack more closely with the last command, we can finally decide which is the address we want to target for the eip new value. Since NOPs are harmful commands (in our case lol) we can even decide to choose an address populated with our NOPs instructions, that eventually, with the eip increasing, will lead to our shellcode execution.
+By looking at the stack more closely with the last command, we can finally decide which is the address we want to target for the eip new value. Since NOPs are harmless commands (in our case lol) we can even decide to choose an address populated with our NOPs instructions, that eventually, with the eip increasing, will lead to our shellcode execution.
 
 With this stack structure
 
