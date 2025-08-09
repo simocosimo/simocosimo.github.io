@@ -71,7 +71,7 @@ And running `file /narnia/narnia0` confirmed that, here is the output:
 ```
 /narnia/narnia1: setuid ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux.so.2, BuildID[sha1]=21fddcd93fcd02a25ca3910950aa9760890721dc, for GNU/Linux 3.2.0, not stripped
 ```
-I'm a dummy :(
+So, since the binary is 32-bit, we need a shellcode that's coherent, meaning targeting Linux x86 as architecture. I'm a dummy :(
 
 ANYWAY, that being the shellcode, we can write a little python script like this one:
 ```
