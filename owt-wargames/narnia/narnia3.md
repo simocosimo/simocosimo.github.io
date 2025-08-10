@@ -52,3 +52,21 @@ We are creating a simlink that points to our target file, narnia4, in the **enti
 And know we have it all! Just run the challenge again with the same path as our last try and we can then cat our `/tmp/n3/pwd` file and save the password for the narnia4 challenge!
 
 Skibidi!
+
+## Something we should know
+At the beginning I said that this was the challenge that made me realize how the whole server is setup... here's what I mean.
+Do you notice that we do not have direct access to the password file of the next level via the command line, but when we find a way to exploit the binaries, they can access that resource?
+Let's look at the privilegies of the narnia3 program
+```
+$ ll /narnia/narnia3
+-r-sr-x--- 1 narnia4 narnia3 11520 Jul 28 19:05 /narnia/narnia3*
+```
+We see that:
+- the owner of the file is `narnia4`... ok interesting
+- the group of the file is `narnia3`, omg that's us
+- by looking at the privilegies, we see that the owner has the `r-s` privs (**alredy confusing**) and the group has the `r-x` privs.
+
+Wtf is that `s` priv? I discovered what it means, [here](https://www.redhat.com/en/blog/suid-sgid-sticky-bit).
+Basically, if in the owner's privs there is the `s` in place of the `x`, it means that when launched, **also by other users**, the program will run with owners privs. And in fact, the narnia3 program can read the narnia4 password, since it is the owner, when run.
+
+// comment on why shellcodes needed the setsuid()
